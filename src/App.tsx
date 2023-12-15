@@ -42,18 +42,27 @@ function App() {
       "#portfolioFeed",
       {
         display: "none",
-        duration: 0.3,
+        duration: 0,
       },
-      "<"
+      "<.3"
     );
     timeline2.to(
       "#instagram",
       {
         display: "block",
+        duration: 0,
       },
-      "<0.3"
+      "<"
     );
   });
+
+  const openPortfolio = () => {
+    if (timeline1.progress() === 0) {
+      timeline1.play();
+    } else {
+      timeline1.restart();
+    }
+  };
 
   return (
     <div className="h-screen flex w-screen relative items-end justify-center">
@@ -67,7 +76,7 @@ function App() {
           id="instagram"
           alt="instagram icon"
           className="absolute w-full h-full cursor-pointer object-cover"
-          onClick={() => timeline1.restart()}
+          onClick={() => openPortfolio()}
         />
         <img
           src={portfolioFeed}
