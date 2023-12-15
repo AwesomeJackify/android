@@ -18,8 +18,6 @@ const Portfolio = () => {
     timeline1.to(".box1", {
       width: "13rem",
       height: "13rem",
-      left: "20%",
-      translateX: "-20%",
       ease: "expo.inOut",
       duration: 0.5,
     });
@@ -58,7 +56,7 @@ const Portfolio = () => {
   };
 
   return (
-    <div className="flex w-full min-h-screen flex-col justify-end">
+    <div className="flex w-full min-h-screen flex-col items-center justify-end">
       <div className="w-full h-full overflow-hidden box1 relative">
         <IoMdClose
           className="w-10 h-10 text-white cursor-pointer fixed top-0 left-0 z-10"
