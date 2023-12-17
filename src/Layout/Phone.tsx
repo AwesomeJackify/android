@@ -3,10 +3,10 @@ import React from "react";
 
 const Phone = ({ children }) => {
   return (
-    <div className="fixed h-screen flex w-screen items-center justify-center bg-black">
+    <div className="fixed h-screen  flex w-screen items-center justify-center bg-black">
       <div
         id="phone"
-        className="overflow-y-auto relative my-16 w-full h-full md:w-1/3  flex items-center justify-center bg-white rounded-md shadow-md"
+        className="min-h-screen  overflow-auto no-scrollbar relative  my-16 w-full h-full md:w-1/3  flex items-center justify-center bg-white rounded-md shadow-md"
       >
         <main className="mb-32">{children}</main>
       </div>
