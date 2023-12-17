@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useNavigate } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
+import Phone from "../Layout/Phone";
 
 const Portfolio = () => {
   const navigate = useNavigate();
@@ -18,35 +19,12 @@ const Portfolio = () => {
     timeline1.to(".box1", {
       width: "13rem",
       height: "13rem",
-      left: "20%",
-      translateX: "-20%",
+
+      translateY: "100%",
       ease: "expo.inOut",
       duration: 0.5,
+      autoAlpha: 0.0,
     });
-    timeline1.to(
-      "#portfolioFeed",
-      {
-        display: "none",
-        duration: 0,
-      },
-      "<.3"
-    );
-    timeline1.to(
-      "#instagram",
-      {
-        display: "block",
-        duration: 0,
-      },
-      "<"
-    );
-    timeline1.to(
-      "#close",
-      {
-        display: "none",
-        duration: 0,
-      },
-      0
-    );
   });
 
   const closePortfolio = () => {
@@ -58,13 +36,13 @@ const Portfolio = () => {
   };
 
   return (
-    <div className="flex w-full min-h-screen flex-col justify-end">
-      <div className="w-full h-full overflow-hidden box1 relative">
-        <IoMdClose
-          className="w-10 h-10 text-white cursor-pointer fixed top-0 left-0 z-10"
-          id="close"
-          onClick={() => closePortfolio()}
-        ></IoMdClose>
+    <Phone>
+      <IoMdClose
+        className="w-10 h-10 sticky text-black cursor-pointer  top-0 left-0 z-10"
+        id="close"
+        onClick={() => closePortfolio()}
+      ></IoMdClose>
+      <div className="">
         <img
           src={instagramImg}
           id="instagram"
@@ -75,10 +53,10 @@ const Portfolio = () => {
           src={portfolioImg}
           id="portfolioFeed"
           alt="portfolio feed"
-          className="w-full"
+          className="w-full h-full object-cover box1 cursor-pointer"
         />
         <h1 className="text-4xl">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
+          hi Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
           pariatur perspiciatis, blanditiis doloribus corporis optio nisi esse
           eveniet sed atque voluptatem dolore nemo maxime odio sequi recusandae
           ea quis! Id atque nobis iusto aliquid modi hic error est impedit
@@ -193,7 +171,7 @@ const Portfolio = () => {
           dolorum hic iste minima?
         </h1>
       </div>
-    </div>
+    </Phone>
   );
 };
 
