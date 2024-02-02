@@ -1,9 +1,6 @@
-import { useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import instagramImg from "../assets/instagram.png";
-import portfolioFeed from "../assets/portfolioFeed.png";
-import { useNavigate } from "react-router-dom";
 import aquaImg from "../assets/aqua.png";
 
 import { MdSignalCellularAlt } from "react-icons/md";
@@ -18,10 +15,7 @@ import { SlPeople } from "react-icons/sl";
 import weatherImg from "../assets/weather.png";
 
 import Portfolio from "../apps/Portfolio";
-
 function App() {
-  const navigate = useNavigate();
-
   enum Apps {
     Portfolio,
     Test,

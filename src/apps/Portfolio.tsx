@@ -1,5 +1,3 @@
-import React from "react";
-import { IoMdClose } from "react-icons/io";
 import saladinoImg from "../assets/saladino.png";
 
 const Portfolio = () => {
