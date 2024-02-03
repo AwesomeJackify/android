@@ -118,7 +118,11 @@ function App() {
               <h1 className="text-4xl max-md:text-xl">Salt Lake City</h1>
               <h2 className="text-xl">Mostly Cloudy</h2>
             </div>
-            <img src={weatherImg} alt="weather" className="w-full scale-150" />
+            <img
+              src={weatherImg}
+              alt="weather"
+              className="w-full scale-150 hover:opacity-50 transition duration-1000"
+            />
             <div className="flex flex-col text-white gap-1 items-end">
               <h1 className="text-3xl max-md:text-xl">Wed, Mar 30</h1>
               <div className="flex justify-end gap-4 items-center">
@@ -131,12 +135,13 @@ function App() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 opacity-70 bg-gradient-to-b from-slate-100 from-10% via-slate-900 to-slate-900 rounded-md p-4 border-slate-400 border-2">
+          <div className="flex flex-col opacity-70 bg-gradient-to-b from-slate-100 from-10% via-slate-900 to-slate-900 rounded-md p-4 border-slate-400 border-2">
             <div className="flex text-white justify-between">
               <h1 className="text-4xl">30, March</h1>
-              <div className="w-1 rounded-xl bg-gradient-to-r from-slate-500 to-black"></div>
+              <div className="w-1 h-12 rounded-xl bg-gradient-to-r from-slate-500 opacity-70 to-slate-900"></div>
               <h1 className="text-4xl">Alarms</h1>
             </div>
+            <div className="w-full h-1 bg-slate-500 opacity-70 rounded-2xl mb-4"></div>
             <div className="flex justify-between">
               <div className="flex text-white items-center gap-2">
                 <div className="bg-gradient-to-b from-gray-500 rounded-sm">
