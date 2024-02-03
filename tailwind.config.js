@@ -27,5 +27,5 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [rotateX],
+  plugins: [rotateX, require("daisyui")],
 };
