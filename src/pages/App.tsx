@@ -163,16 +163,15 @@ function App() {
               <div
                 id={`app${item.name.toString()}`}
                 key={item.name}
-                className="relative"
+                onClick={() => openApp(item.timeline)}
               >
                 <img
                   src={item.icon}
                   alt={item.name.toString()}
-                  className="w-32 border-4 rounded-2xl bg-black border-zinc-300 border-l-zinc-100 border-b-black border-r-black shadow-2xl"
-                  onClick={() => openApp(item.timeline)}
+                  className="w-32 border-4 rounded-2xl bg-black border-zinc-300 border-l-zinc-300 border-b-black border-r-black shadow-2xl"
                 />
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-10% from-white opacity-30 rounded-2xl"></div>
-                <div className="preview h-32 aspect-square absolute bottom-6 object-cover  overflow-y-scroll bg-white hidden rounded-2xl">
+                <div className="h-32 aspect-square bottom-6 absolute bg-gradient-to-b from-10% from-white opacity-30 rounded-2xl"></div>
+                <div className="preview h-32 aspect-square absolute bottom-6 object-cover  overflow-y-scroll bg-white hidden rounded-2xl z-10">
                   <Portfolio />
                 </div>
               </div>
