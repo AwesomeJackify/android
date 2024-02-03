@@ -36,8 +36,9 @@ function App() {
       .to("#app" + appId + ">.preview", {
         width: "100%",
         height: "100%",
+        top: 0,
+        right: 0,
         left: 0,
-        bottom: 0,
         borderRadius: 0,
         ease: "expo.inOut",
         duration: 0.4,
@@ -109,7 +110,7 @@ function App() {
           </div>
         </div>
         <div className="flex z-10 px-2 max-w-screen-xl mx-auto w-full flex-col gap-4 max-md:gap-8  max-md:pt-8 relative grow">
-          <div className="bg-black h-32 w-full rounded-2xl border-white border-t-2 border-x-[1px]">
+          <div className="bg-black grow max-h-32 w-full rounded-2xl border-white border-t-2 border-x-[1px]">
             <div className="bg-gradient-to-b from-zinc-700 to-zinc-900 h-1/2 w-full rounded-2xl"></div>
           </div>
           <div className="grid grid-cols-3 place-items-center">
