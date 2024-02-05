@@ -31,6 +31,7 @@ function App() {
     timeline
       .to("#app" + appId + ">.preview", {
         display: "block",
+        visibility: "hidden",
         duration: 0,
       })
       .to("#app" + appId + ">.preview", {
@@ -42,7 +43,14 @@ function App() {
         borderRadius: 0,
         ease: "expo.inOut",
         duration: 0.4,
-      });
+      })
+      .to(
+        "#app" + appId + ">.preview",
+        {
+          visibility: "visible",
+        },
+        0.1
+      );
 
   const portfolioTimeline = createTimeline();
   const testTimeline = createTimeline();
@@ -157,7 +165,7 @@ function App() {
           </div>
           <div
             id="dock"
-            className="flex z-10 justify-center gap-6 mt-auto mb-6"
+            className="flex z-10 justify-center gap-6 mt-auto mb-6 items-end"
           >
             {dockItems.map((item) => (
               <div
@@ -165,12 +173,15 @@ function App() {
                 key={item.name}
                 onClick={() => openApp(item.timeline)}
               >
-                <img
-                  src={item.icon}
-                  alt={item.name.toString()}
-                  className="w-32 border-4 rounded-2xl bg-black border-zinc-300 border-l-zinc-300 border-b-black border-r-black shadow-2xl"
-                />
-                <div className="h-32 aspect-square bottom-6 absolute bg-gradient-to-b from-10% from-white opacity-30 rounded-2xl"></div>
+                <div className="relative">
+                  <img
+                    src={item.icon}
+                    alt={item.name.toString()}
+                    className="w-32  border-4 rounded-2xl bottom-0 bg-black border-zinc-300 border-l-zinc-300 border-b-black border-r-black shadow-2xl"
+                  />
+                  <div className="h-32 aspect-square bottom-0 absolute bg-gradient-to-b from-10% from-white opacity-30 rounded-2xl"></div>
+                </div>
+
                 <div className="preview h-32 aspect-square absolute bottom-6 object-cover  overflow-y-scroll bg-white hidden rounded-2xl z-10">
                   <Portfolio />
                 </div>
