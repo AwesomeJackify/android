@@ -1,3 +1,7 @@
 1. change parent of app to not be relative.
 
 - figure out how to select the right mapped element
+
+2. fix text moving when opening app
+
+- try scale

@@ -1,12 +1,15 @@
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import instagramImg from "../assets/instagram.png";
+import safariImg from "../assets/safari.png";
+import itunesImg from "../assets/itunes.webp";
 import aquaImg from "../assets/aqua.png";
 
 import { MdSignalCellularAlt } from "react-icons/md";
 import { MdWifi } from "react-icons/md";
 import { PiClockFill } from "react-icons/pi";
 import { MdBatteryChargingFull } from "react-icons/md";
+import { MdOutlineSignalCellularAlt2Bar } from "react-icons/md";
 import { HiOutlineCalendarDays } from "react-icons/hi2";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdArrowBackIosNew } from "react-icons/md";
@@ -18,7 +21,8 @@ import Portfolio from "../apps/Portfolio";
 function App() {
   enum Apps {
     Portfolio,
-    Test,
+    Test1,
+    Test2,
   }
 
   const createTimeline = () =>
@@ -27,7 +31,7 @@ function App() {
       delay: 0,
     });
 
-  const configureTimeline = (appId: number, timeline: gsap.core.Timeline) =>
+  const configureAppTimeline = (appId: number, timeline: gsap.core.Timeline) =>
     timeline
       .to("#app" + appId + ">.preview", {
         display: "block",
@@ -53,11 +57,30 @@ function App() {
       );
 
   const portfolioTimeline = createTimeline();
-  const testTimeline = createTimeline();
+  const test1Timeline = createTimeline();
+  const test2Timeline = createTimeline();
+
+  const timelines = [portfolioTimeline, test1Timeline, test2Timeline];
+
+  const headerTimeline = gsap.timeline({
+    repeat: -1,
+  });
 
   useGSAP(() => {
-    configureTimeline(0, portfolioTimeline);
-    configureTimeline(1, testTimeline);
+    timelines.forEach((timeline, index) => {
+      configureAppTimeline(index, timeline);
+    });
+
+    headerTimeline
+      .to("#signalFull", {
+        visibility: "hidden",
+        duration: gsap.utils.random(0.5, 1.5),
+      })
+      .to("#signalFull", {
+        visibility: "visible",
+        duration: gsap.utils.random(2, 4),
+      })
+      .play();
   });
 
   const openApp = (timeline: gsap.core.Timeline) => {
@@ -69,11 +92,9 @@ function App() {
   };
 
   const closeApp = () => {
-    if (portfolioTimeline.progress() == 1) {
-      portfolioTimeline.reverse();
-    } else if (testTimeline.progress() == 1) {
-      testTimeline.reverse();
-    }
+    timelines.forEach((timeline) => {
+      timeline.reverse();
+    });
   };
 
   const dockItems = [
@@ -83,14 +104,14 @@ function App() {
       timeline: portfolioTimeline,
     },
     {
-      name: Apps.Test,
-      icon: instagramImg,
-      timeline: testTimeline,
+      name: Apps.Test1,
+      icon: safariImg,
+      timeline: test1Timeline,
     },
     {
-      name: "test2",
-      icon: instagramImg,
-      timeline: testTimeline,
+      name: Apps.Test2,
+      icon: itunesImg,
+      timeline: test2Timeline,
     },
   ];
 
@@ -104,8 +125,15 @@ function App() {
         />
         <div className="flex w-full py-2 z-10 bg-gradient-to-b from-gray-500 via-black to-black">
           <div className="flex text-white justify-between w-full items-center mx-4">
-            <div className="flex gap-2 max-md:gap-1 items-center">
-              <MdSignalCellularAlt className="text-2xl" />
+            <div
+              className="flex gap-2 max-md:gap-1 items-center"
+              id="header-left"
+            >
+              <div className="relative">
+                <MdSignalCellularAlt id="signalFull" className="text-2xl" />
+                <MdOutlineSignalCellularAlt2Bar className="text-2xl absolute top-0 left-0" />
+              </div>
+
               <p className="font-bold text-lg max-md:text-base">AT&T</p>
               <MdWifi className="text-2xl max-md:text-base" />
             </div>
@@ -117,7 +145,7 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="flex z-10 px-2 max-w-screen-xl mx-auto w-full flex-col gap-4 max-md:gap-8  max-md:pt-8 relative grow">
+        <div className="flex z-10 px-2 max-w-screen-xl pt-4 mx-auto w-full flex-col gap-4 max-md:gap-8  max-md:pt-8 relative grow">
           <div className="bg-black grow max-h-32 w-full rounded-2xl border-white border-t-2 border-x-[1px]">
             <div className="bg-gradient-to-b from-zinc-700 to-zinc-900 h-1/2 w-full rounded-2xl"></div>
           </div>
@@ -168,18 +196,17 @@ function App() {
             className="flex z-10 justify-center gap-6 mt-auto mb-6 items-end"
           >
             {dockItems.map((item) => (
-              <div
-                id={`app${item.name.toString()}`}
-                key={item.name}
-                onClick={() => openApp(item.timeline)}
-              >
-                <div className="relative">
+              <div id={`app${item.name.toString()}`} key={item.name}>
+                <div>
                   <img
                     src={item.icon}
                     alt={item.name.toString()}
-                    className="w-32  border-4 rounded-2xl bottom-0 bg-black border-zinc-300 border-l-zinc-300 border-b-black border-r-black shadow-2xl"
+                    className="w-32 border-4 rounded-2xl bottom-0 bg-black border-zinc-300 border-l-zinc-300 border-b-black border-r-black shadow-2xl"
                   />
-                  <div className="h-32 aspect-square bottom-0 absolute bg-gradient-to-b from-10% from-white opacity-30 rounded-2xl"></div>
+                  <div
+                    className="h-32 aspect-square bottom-6 absolute bg-gradient-to-b from-10% from-white opacity-30 rounded-2xl"
+                    onClick={() => openApp(item.timeline)}
+                  ></div>
                 </div>
 
                 <div className="preview h-32 aspect-square absolute bottom-6 object-cover  overflow-y-scroll bg-white hidden rounded-2xl z-10">
