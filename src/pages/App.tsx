@@ -118,6 +118,7 @@ function App() {
   return (
     <div className="bg-black overflow-hidden">
       <div className="flex min-h-screen flex-col max-w-lg mx-auto relative">
+        {/* Background Image - Covers whole screen */}
         <img
           src={aquaImg}
           alt="aqua"
@@ -125,7 +126,7 @@ function App() {
         />
         {/* Nav top */}
         <div className="flex w-full py-2 z-10 bg-gradient-to-b from-gray-500 via-black to-black">
-          <div className="flex text-white justify-between w-full items-center mx-4">
+          <div className="flex text-white justify-between w-full items-center mx-4 z-10">
             <div
               className="flex gap-2 max-md:gap-1 items-center"
               id="header-left"
@@ -147,10 +148,19 @@ function App() {
           </div>
         </div>
         <div className="flex z-10 px-2 max-w-screen-xl pt-4 mx-auto w-full flex-col gap-4 max-md:gap-8  max-md:pt-8 relative grow">
-          <div className="bg-black flex items-center gap-16 justify-evenly grow max-h-32 w-full rounded-2xl border-white border-t-2 border-x-[1px]">
-            <div className="bg-white relative bottom-4 shao  rounded-md h-36 w-3/6 ml-8"></div>
-            <div className="bg-white relative bottom-4  rounded-md h-36 w-3/6 mr-8"></div>
+          <div className="bg-gradient-to-b from-gray-500 to-black border border-white mt-4    grow max-h-48 w-full -z-10 rounded-2xl  ">
+            <div className="flex w-full gap-16 items-center justify-stretch ">
+              <div className="bg-gradient-to-b ml-4 relative  from-slate-100 to-slate-200 border border-white    bottom-4 shadow-large    rounded-md h-36 w-48 ">
+                <h1 className="text-8xl text-black ">11</h1>
+                <div className="absolute bg-gradient-to-b from-slate-200 to-slate-900 top-[8rem]            h-4 36 w-[8.6rem] z-10 "></div>
+              </div>
+              <div className="bg-gradient-to-b mr-4 from-slate-100 to-slate-200  relative border border-white   bottom-4 shadow-large    rounded-md h-36 w-48 ">
+                <h1 className="text-8xl text-black ">32</h1>
+                <div className="absolute bg-gradient-to-b from-slate-200 to-slate-900 top-[8rem]           h-4 36 w-[8.6rem] z-10 "></div>
+              </div>
+            </div>
           </div>
+
           <div className="grid grid-cols-3 place-items-center">
             <div className="flex flex-col text-white gap-1">
               <h1 className="text-4xl max-md:text-xl">Salt Lake City</h1>
