@@ -152,7 +152,7 @@ function App() {
             <div className="bg-gradient-to-b from-gray-500 to-black border border-white mt-4    grow max-h-48 w-full -z-10 rounded-2xl  ">
               <div className="flex w-full gap-16 items-center justify-stretch ">
                 <div className="bg-gradient-to-b ml-4 relative  from-slate-100 to-slate-200 border border-white    bottom-4 shadow-large    rounded-md h-36 w-48 ">
-                  <h1 className="text-9xl text-black absolute bottom-5  ">
+                  <h1 className="text-9xl bg-gradient-to-r from-white via-black to-slate-600 inline-block bg-clip-text text-transparent absolute bottom-5  ">
                     11
                   </h1>
                   <h1 className="text-xl text-black absolute bottom-3 shadow-md  ">
@@ -161,7 +161,9 @@ function App() {
                   <div className="absolute bg-gradient-to-b from-slate-200 to-slate-900 top-[8rem]            h-4 36 w-[8.5rem] z-10 "></div>
                 </div>
                 <div className="bg-gradient-to-b mr-4 from-slate-100 to-slate-200  relative border border-white   bottom-4 shadow-large    rounded-md h-36 w-48 ">
-                  <h1 className="text-9xl text-black  absolute bottom-5">32</h1>
+                  <h1 className="text-9xl bg-gradient-to-r from-white via-black to-slate-600 inline-block bg-clip-text text-transparent absolute bottom-5  ">
+                    32
+                  </h1>
                   <div className="absolute bg-gradient-to-b from-slate-200 to-slate-900 top-[8rem]           h-4 36 w-[8.5rem] z-10 "></div>
                 </div>
               </div>
