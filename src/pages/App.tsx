@@ -123,6 +123,7 @@ function App() {
           alt="aqua"
           className="absolute top-0 left-0 w-full h-full object-cover"
         />
+        {/* Nav top */}
         <div className="flex w-full py-2 z-10 bg-gradient-to-b from-gray-500 via-black to-black">
           <div className="flex text-white justify-between w-full items-center mx-4">
             <div
@@ -146,8 +147,9 @@ function App() {
           </div>
         </div>
         <div className="flex z-10 px-2 max-w-screen-xl pt-4 mx-auto w-full flex-col gap-4 max-md:gap-8  max-md:pt-8 relative grow">
-          <div className="bg-black grow max-h-32 w-full rounded-2xl border-white border-t-2 border-x-[1px]">
-            <div className="bg-gradient-to-b from-zinc-700 to-zinc-900 h-1/2 w-full rounded-2xl"></div>
+          <div className="bg-black flex items-center gap-16 justify-evenly grow max-h-32 w-full rounded-2xl border-white border-t-2 border-x-[1px]">
+            <div className="bg-white relative bottom-4 shao  rounded-md h-36 w-3/6 ml-8"></div>
+            <div className="bg-white relative bottom-4  rounded-md h-36 w-3/6 mr-8"></div>
           </div>
           <div className="grid grid-cols-3 place-items-center">
             <div className="flex flex-col text-white gap-1">
