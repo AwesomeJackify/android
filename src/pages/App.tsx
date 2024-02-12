@@ -1,4 +1,5 @@
 import { gsap } from "gsap";
+import { useState, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import instagramImg from "../assets/instagram.png";
 import safariImg from "../assets/safari.png";
@@ -25,13 +26,18 @@ function App() {
     Test2,
   }
 
+  const [yeet, setYeet] = useState(true);
+
   const createTimeline = () =>
     gsap.timeline({
       paused: true,
       delay: 0,
     });
 
-  const configureAppTimeline = (appId: number, timeline: gsap.core.Timeline) =>
+  const configureAppTimeline = (
+    appId: number,
+    timeline: gsap.core.Timeline
+  ) => {
     timeline
       .to("#app" + appId + ">.preview", {
         display: "block",
@@ -55,6 +61,17 @@ function App() {
         },
         0.1
       );
+  };
+
+  let portfolioTimelineRef = useRef<gsap.core.Timeline>();
+  let test1TimelineRef = useRef<gsap.core.Timeline>();
+  let test2TimelineRef = useRef<gsap.core.Timeline>();
+
+  const timelineRefs = [
+    portfolioTimelineRef,
+    test1TimelineRef,
+    test2TimelineRef,
+  ];
 
   const portfolioTimeline = createTimeline();
   const test1Timeline = createTimeline();
@@ -71,6 +88,10 @@ function App() {
       configureAppTimeline(index, timeline);
     });
 
+    timelineRefs.forEach(
+      (timelineRef, index) => (timelineRef.current = timelines[index])
+    );
+
     headerTimeline
       .to("#signalFull", {
         visibility: "hidden",
@@ -83,17 +104,21 @@ function App() {
       .play();
   });
 
-  const openApp = (timeline: gsap.core.Timeline) => {
-    if (timeline.progress() === 0) {
-      timeline.play();
-    } else {
-      timeline.restart();
+  const openApp = (timeline: gsap.core.Timeline | undefined) => {
+    if (timeline) {
+      if (timeline.progress() === 0) {
+        timeline.play();
+      } else {
+        timeline.restart();
+      }
     }
   };
 
   const closeApp = () => {
-    timelines.forEach((timeline) => {
-      timeline.reverse();
+    timelineRefs.forEach((timeline) => {
+      if (timeline.current) {
+        timeline.current.reverse();
+      }
     });
   };
 
@@ -101,16 +126,19 @@ function App() {
     {
       name: Apps.Portfolio,
       icon: instagramImg,
+      ref: portfolioTimelineRef,
       timeline: portfolioTimeline,
     },
     {
       name: Apps.Test1,
       icon: safariImg,
+      ref: test1TimelineRef,
       timeline: test1Timeline,
     },
     {
       name: Apps.Test2,
       icon: itunesImg,
+      ref: test2TimelineRef,
       timeline: test2Timeline,
     },
   ];
@@ -152,7 +180,11 @@ function App() {
           <div className="grid grid-cols-3 place-items-center">
             <div className="flex flex-col text-white gap-1">
               <h1 className="text-4xl max-md:text-xl">Salt Lake City</h1>
-              <h2 className="text-xl">Mostly Cloudy</h2>
+              {yeet && (
+                <h2 className="text-xl" onClick={() => setYeet(false)}>
+                  Mostly Cloudy
+                </h2>
+              )}
             </div>
             <img
               src={weatherImg}
@@ -205,7 +237,7 @@ function App() {
                   />
                   <div
                     className="h-32 aspect-square bottom-6 absolute bg-gradient-to-b from-10% from-white opacity-30 rounded-2xl"
-                    onClick={() => openApp(item.timeline)}
+                    onClick={() => openApp(item.ref.current)}
                   ></div>
                 </div>
 
