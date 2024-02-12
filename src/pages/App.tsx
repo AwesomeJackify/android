@@ -4,6 +4,7 @@ import instagramImg from "../assets/instagram.png";
 import safariImg from "../assets/safari.png";
 import itunesImg from "../assets/itunes.webp";
 import aquaImg from "../assets/aqua.png";
+import { useState } from "react";
 
 import { MdSignalCellularAlt } from "react-icons/md";
 import { MdWifi } from "react-icons/md";
@@ -65,6 +66,19 @@ function App() {
   const headerTimeline = gsap.timeline({
     repeat: -1,
   });
+
+  let options = { hour: "numeric", minute: "numeric" };
+  let time = new Date().toLocaleTimeString([], options);
+
+  const [ctime, setTime] = useState(time);
+
+  const UpdateTime = () => {
+    let time = new Date().toLocaleTimeString([], options);
+
+    setTime(time);
+  };
+
+  setInterval(UpdateTime);
 
   useGSAP(() => {
     timelines.forEach((timeline, index) => {
@@ -140,7 +154,7 @@ function App() {
                 <p className="font-bold text-lg max-md:text-base">AT&T</p>
                 <MdWifi className="text-2xl max-md:text-base" />
               </div>
-              <h1 className="font-semibold text-xl">11:30 PM</h1>
+              <h1 className="font-semibold text-xl">{ctime}</h1>
               <div className="flex gap-2 items-center max-md:gap-1">
                 <PiClockFill className="text-2xl " />
                 <p className="text-lg">100%</p>
