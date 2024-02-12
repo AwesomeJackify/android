@@ -149,7 +149,7 @@ function App() {
             </div>
           </div>
           <div className="flex z-10 px-2 max-w-screen-xl pt-4 mx-auto w-full flex-col gap-2 max-md:gap-8  max-md:pt-8 relative grow">
-            <div className="background-blur bg-gradient-to-b from-gray-500  to-black border-white mt-4    grow max-h-40 w-full -z-10 rounded-2xl  ">
+            <div className="background-blur bg-gradient-to-b from-gray-500 from-10%   to-black  btn-gradient-1 mt-4    grow max-h-40 w-full -z-10 rounded-2xl  ">
               <div className="flex w-full  items-center justify-evenly gap-x-8 ">
                 <div className="bg-gradient-to-b ml-8 relative  from-slate-100 to-slate-200 border border-white    bottom-4 shadow-large    rounded-md h-36 w-48 ">
                   <h1 className="text-9xl bg-gradient-to-b from-gray-500 via-black to-slate-600 inline-block bg-clip-text text-transparent absolute left-6  ">

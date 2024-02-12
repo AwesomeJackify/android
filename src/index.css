@@ -19,6 +19,14 @@
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: saturate(180%) blur(20px);
   }
+
+  .btn-gradient-1 {
+    border-style: solid;
+
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 0.2rem inset gray;
+  }
 }
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 
