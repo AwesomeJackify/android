@@ -150,23 +150,26 @@ function App() {
           </div>
           <div className="flex z-10 px-2 max-w-screen-xl pt-4 mx-auto w-full flex-col gap-2 max-md:gap-8  max-md:pt-8 relative grow">
             <div className="background-blur bg-gradient-to-b from-gray-500  to-black border-white mt-4    grow max-h-40 w-full -z-10 rounded-2xl  ">
-              <div className="flex w-full gap-16 items-center justify-stretch ">
-                <div className="bg-gradient-to-b ml-4 relative  from-slate-100 to-slate-200 border border-white    bottom-4 shadow-large    rounded-md h-36 w-48 ">
-                  <h1 className="text-9xl bg-gradient-to-r from-gray-500 via-black to-slate-600 inline-block bg-clip-text text-transparent absolute left-6  ">
+              <div className="flex w-full  items-center justify-evenly gap-x-8 ">
+                <div className="bg-gradient-to-b ml-8 relative  from-slate-100 to-slate-200 border border-white    bottom-4 shadow-large    rounded-md h-36 w-48 ">
+                  <h1 className="text-9xl bg-gradient-to-b from-gray-500 via-black to-slate-600 inline-block bg-clip-text text-transparent absolute left-6  ">
                     11
                   </h1>
-                  <h1 className="text-2xl  left-2 shadow-md bg-gradient-to-r from-gray-900 via-black to-slate-600 inline-block bg-clip-text text-transparent  absolute bottom-3   ">
+                  <h1 className="text-xl  left-2 shadow-md bg-gradient-to-r font-light from-gray-900 via-black to-slate-600 inline-block bg-clip-text text-transparent  absolute bottom-3   ">
                     PM
                   </h1>
                   <div className="absolute bg-gradient-to-b from-slate-200 to-slate-900 top-[8rem] h-4 36 w-full z-10 "></div>
                   <div className="absolute bg-gradient-to-b from-slate-200 to-slate-400 bottom-[8.1rem] h-2 36 w-full z-10 "></div>
+                  <div className="absolute bg-gradient-to-b from-blue-200 to-gray-400 bottom-[8.5rem] opacity-40 rounded-full h-2 36 w-full z-10 "></div>
                 </div>
-                <div className="bg-gradient-to-b mr-4 from-slate-100 to-slate-200  relative border border-white   bottom-4 shadow-large    rounded-md h-36 w-48 ">
-                  <h1 className="text-9xl bg-gradient-to-r from-white via-black to-slate-600 inline-block bg-clip-text text-transparent absolute right-6  ">
+                <div className="bg-gradient-to-b mr-8 from-slate-100 to-slate-200  relative border border-white   bottom-4 shadow-large    rounded-md h-36 w-48 ">
+                  <h1 className="text-9xl bg-gradient-to-b from-white via-black to-slate-600 inline-block bg-clip-text text-transparent absolute right-6  ">
                     30
                   </h1>
                   <div className="absolute bg-gradient-to-b from-slate-200 to-slate-900 top-[8rem]           h-4 36 w-full z-10 "></div>
+
                   <div className="absolute bg-gradient-to-b from-slate-200 to-slate-400 bottom-[8.1rem] h-2 36 w-full z-10 "></div>
+                  <div className="absolute bg-gradient-to-b from-blue-200 to-gray-400 bottom-[8.5rem] opacity-40 rounded-full h-2 36 w-full z-10 "></div>
                 </div>
               </div>
             </div>
