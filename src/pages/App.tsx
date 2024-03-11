@@ -39,9 +39,25 @@ function App() {
     timeline: gsap.core.Timeline
   ) => {
     timeline
+      .to("#appIcon" + appId, {
+        display: "block",
+        opacity: 0.6,
+        duration: 0.1,
+      })
+      .to("#appIconBackground" + appId, {
+        opacity: 0.5,
+        duration: 0.15,
+      })
+      .to("#app" + appId, {
+        delay: 0.05,
+        display: "block",
+        opacity: 1,
+        duration: 0.1,
+      })
+
       .to("#app" + appId + ">.preview", {
         display: "block",
-        visibility: "hidden",
+        opacity: 1,
         duration: 0,
       })
       .to("#app" + appId + ">.preview", {
@@ -52,6 +68,7 @@ function App() {
         left: 0,
         borderRadius: 0,
         ease: "expo.inOut",
+        delay: 0.4,
         duration: 0.4,
       })
       .to(
@@ -233,10 +250,12 @@ function App() {
                   <img
                     src={item.icon}
                     alt={item.name.toString()}
+                    id={`appIcon${item.name}`}
                     className="w-32 border-4 rounded-2xl bottom-0 bg-black border-zinc-300 border-l-zinc-300 border-b-black border-r-black shadow-2xl"
                   />
                   <div
-                    className="h-32 aspect-square bottom-6 absolute bg-gradient-to-b from-10% from-white opacity-30 rounded-2xl"
+                    id={`appIconBackground${item.name}`}
+                    className="h-32 aspect-square bottom-6 absolute bg-black opacity-0 rounded-2xl"
                     onClick={() => openApp(item.ref.current)}
                   ></div>
                 </div>
