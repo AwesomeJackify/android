@@ -61,15 +61,24 @@ function App() {
         duration: 0,
       })
       .to("#app" + appId + ">.preview", {
-        width: "100%",
-        height: "100%",
-        top: 0,
-        right: 0,
-        left: 0,
+        width: "10%",
+        height: "10%",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        // bottom: 0,
         borderRadius: 0,
         ease: "expo.inOut",
-        delay: 0.4,
-        duration: 0.4,
+        // delay: 0.4,
+        duration: 0.0,
+      })
+      .to("#app" + appId + ">.preview", {
+        width: "100%",
+        height: "100%",
+
+        ease: "expo.inOut",
+        // delay: 0.4,
+        duration: 0.5,
       })
       .to(
         "#app" + appId + ">.preview",
