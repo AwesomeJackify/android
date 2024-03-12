@@ -75,6 +75,7 @@ function App() {
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)",
+        filter: "blur(0.8px)",
         // bottom: 0,
         borderRadius: 0,
         ease: "expo.inOut",
@@ -85,6 +86,7 @@ function App() {
       .to("#app" + appId + ">.preview", {
         width: "100%",
         height: "100%",
+        filter: "blur(0px)",
 
         ease: "expo.inOut",
         // delay: 0.4,
