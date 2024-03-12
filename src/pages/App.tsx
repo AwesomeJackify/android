@@ -62,12 +62,14 @@ function App() {
         opacity: 0,
         duration: 0,
       })
+      // Blur background
       .to("#bgImage", {
         filter: "blur(5px)",
 
         opacity: 0.8,
         duration: 0.12,
       })
+
       // Make app start small on screen
       .to("#app" + appId + ">.preview", {
         width: "20%",
@@ -83,6 +85,24 @@ function App() {
         // delay: 0.4,
         duration: 0.0,
       })
+      .to(
+        "#date-alarm-card",
+        {
+          scale: 0.98,
+          opacity: 0.5,
+          duration: 0.25,
+        },
+        0
+      )
+      .to(
+        ".weather-text",
+        {
+          opacity: 0.5,
+          duration: 0.15,
+        },
+        0
+      )
+
       .to("#app" + appId + ">.preview", {
         width: "100%",
         height: "100%",
@@ -216,11 +236,19 @@ function App() {
           <div className="bg-black grow max-h-32 w-full rounded-2xl border-white border-t-2 border-x-[1px]">
             <div className="bg-gradient-to-b from-zinc-700 to-zinc-900 h-1/2 w-full rounded-2xl"></div>
           </div>
-          <div className="grid grid-cols-3 place-items-center">
+          <div
+            id="weather-card"
+            className="grid grid-cols-3 place-items-center"
+          >
             <div className="flex flex-col text-white gap-1">
-              <h1 className="text-4xl max-md:text-xl">Salt Lake City</h1>
+              <h1 className="weather-text text-4xl max-md:text-xl">
+                Salt Lake City
+              </h1>
               {yeet && (
-                <h2 className="text-xl" onClick={() => setYeet(false)}>
+                <h2
+                  className="text-xl weather-text"
+                  onClick={() => setYeet(false)}
+                >
                   Mostly Cloudy
                 </h2>
               )}
@@ -230,7 +258,7 @@ function App() {
               alt="weather"
               className="w-full scale-150 hover:opacity-50 transition duration-1000"
             />
-            <div className="flex flex-col text-white gap-1 items-end">
+            <div className="weather-text flex flex-col text-white gap-1 items-end">
               <h1 className="text-3xl max-md:text-xl">Wed, Mar 30</h1>
               <div className="flex justify-end gap-4 items-center">
                 <h2 className="text-5xl max-md:text-3xl">47°</h2>
@@ -242,7 +270,10 @@ function App() {
             </div>
           </div>
 
-          <div className="flex flex-col opacity-70 bg-gradient-to-b from-slate-100 from-10% via-slate-900 to-slate-900 rounded-md p-4 border-slate-400 border-2">
+          <div
+            id="date-alarm-card"
+            className="flex flex-col opacity-70 bg-gradient-to-b from-slate-100 from-10% via-slate-900 to-slate-900 rounded-md p-4 border-slate-400 border-2"
+          >
             <div className="flex text-white justify-between">
               <h1 className="text-4xl">30, March</h1>
               <div className="w-1 h-12 rounded-xl bg-gradient-to-r from-slate-500 opacity-70 to-slate-900"></div>
