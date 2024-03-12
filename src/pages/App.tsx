@@ -48,18 +48,26 @@ function App() {
         opacity: 0.5,
         duration: 0.15,
       })
-      .to("#app" + appId, {
-        delay: 0.05,
-        display: "block",
-        opacity: 1,
-        duration: 0.1,
-      })
-
+      // .to("#app" + appId, {
+      //   delay: 0.05,
+      //   display: "block",
+      //   opacity: 1,
+      //   duration: 0.1,
+      // })
+      // Opens/closes app
       .to("#app" + appId + ">.preview", {
         display: "block",
-        opacity: 1,
+        opacity: 0,
         duration: 0,
       })
+      .to("#bgImage", {
+        filter: "blur(5px)",
+
+        opacity: 0.8,
+        duration: 0.12,
+        // scale: 1.0,
+      })
+      // Make app start small on screen
       .to("#app" + appId + ">.preview", {
         width: "10%",
         height: "10%",
@@ -69,6 +77,7 @@ function App() {
         // bottom: 0,
         borderRadius: 0,
         ease: "expo.inOut",
+        opacity: 1,
         // delay: 0.4,
         duration: 0.0,
       })
@@ -173,6 +182,7 @@ function App() {
     <div className="bg-black overflow-hidden">
       <div className="flex min-h-screen flex-col max-w-lg mx-auto relative">
         <img
+          id="bgImage"
           src={aquaImg}
           alt="aqua"
           className="absolute top-0 left-0 w-full h-full object-cover"
