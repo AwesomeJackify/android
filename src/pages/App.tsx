@@ -39,14 +39,16 @@ function App() {
     timeline: gsap.core.Timeline
   ) => {
     timeline
-      .to("#appIcon" + appId, {
-        display: "block",
-        opacity: 0.6,
-        duration: 0.1,
-      })
+      // .to("#appIcon" + appId, {
+      //   display: "block",
+      //   opacity: 0.6,
+      //   duration: 0.1,
+      // })
+      // Makes app button opacity go lower
       .to("#appIconBackground" + appId, {
         opacity: 0.5,
         duration: 0.15,
+        ease: "easeOutBack",
       })
       // .to("#app" + appId, {
       //   delay: 0.05,
@@ -65,12 +67,11 @@ function App() {
 
         opacity: 0.8,
         duration: 0.12,
-        // scale: 1.0,
       })
       // Make app start small on screen
       .to("#app" + appId + ">.preview", {
-        width: "10%",
-        height: "10%",
+        width: "20%",
+        height: "20%",
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)",
