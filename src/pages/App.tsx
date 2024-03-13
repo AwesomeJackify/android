@@ -45,7 +45,7 @@ function App() {
       //   duration: 0.1,
       // })
       // Makes app button opacity go lower
-      .to("#appIconBackground" + appId, {
+      .to("#appIcon" + appId, {
         opacity: 0.5,
         duration: 0.15,
         ease: "easeOutBack",
@@ -70,6 +70,15 @@ function App() {
         duration: 0.12,
       })
 
+      .to(
+        "#weather-img",
+        {
+          opacity: 0.0,
+          duration: 0.1,
+          delay: 0.1,
+        },
+        0
+      )
       // Make app start small on screen
       .to("#app" + appId + ">.preview", {
         width: "20%",
@@ -77,7 +86,7 @@ function App() {
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)",
-        filter: "blur(0.8px)",
+
         // bottom: 0,
         borderRadius: 0,
         ease: "expo.inOut",
@@ -254,6 +263,7 @@ function App() {
               )}
             </div>
             <img
+              id="weather-img"
               src={weatherImg}
               alt="weather"
               className="w-full scale-150 hover:opacity-50 transition duration-1000"
