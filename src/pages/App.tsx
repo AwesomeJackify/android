@@ -45,7 +45,7 @@ function App() {
       //   duration: 0.1,
       // })
       // Makes app button opacity go lower
-      .to("#appIconBackground" + appId, {
+      .to("#appIcon" + appId, {
         opacity: 0.5,
         duration: 0.15,
         ease: "easeOutBack",
