@@ -323,7 +323,7 @@ function App() {
                   ></div>
                 </div>
 
-                <div className="preview h-32 aspect-square absolute bottom-6 object-cover  overflow-y-scroll bg-white hidden rounded-2xl z-10">
+                <div className="no-scrollbar preview h-32 aspect-square absolute bottom-6 object-cover  overflow-y-scroll bg-white hidden rounded-2xl z-10">
                   <Portfolio />
                 </div>
               </div>
