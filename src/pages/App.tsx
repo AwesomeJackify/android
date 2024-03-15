@@ -27,6 +27,7 @@ function App() {
   }
 
   const [yeet, setYeet] = useState(true);
+  const [animationCompleted, setAnimationCompleted] = useState(false);
 
   const createTimeline = () =>
     gsap.timeline({
@@ -128,6 +129,9 @@ function App() {
         },
         0.1
       );
+    timeline.eventCallback("onComplete", () => {
+      setAnimationCompleted(true);
+    });
   };
 
   let portfolioTimelineRef = useRef<gsap.core.Timeline>();
@@ -172,6 +176,7 @@ function App() {
   });
 
   const openApp = (timeline: gsap.core.Timeline | undefined) => {
+    setAnimationCompleted(false); //restarts animation
     if (timeline) {
       if (timeline.progress() === 0) {
         timeline.play();
@@ -323,8 +328,8 @@ function App() {
                   ></div>
                 </div>
 
-                <div className="preview h-32 aspect-square absolute bottom-6 object-cover  overflow-y-scroll bg-white hidden rounded-2xl z-10">
-                  <Portfolio />
+                <div className="no-scrollbar preview h-32 aspect-square absolute bottom-6 object-cover  overflow-y-scroll bg-white hidden rounded-2xl z-10">
+                  <Portfolio animationCompleted={animationCompleted} />
                 </div>
               </div>
             ))}
