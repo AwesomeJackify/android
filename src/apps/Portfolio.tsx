@@ -1,6 +1,8 @@
 import { FaArrowRight } from "react-icons/fa";
 
-const Portfolio = ({ animationCompleted }) => {
+const Portfolio: React.FC<{ animationCompleted: boolean }> = ({
+  animationCompleted,
+}) => {
   return (
     <div className="flex min-h-screen flex-col justify-start">
       {/* Sticky nav bar */}
