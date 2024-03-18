@@ -18,6 +18,17 @@ const Portfolio: React.FC<{ animationCompleted: boolean }> = ({
           </div>
         )}
       </div>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit possimus ab
+      odio quisquam voluptatem quam. Eaque explicabo delectus ab commodi, nemo
+      vitae facilis repellendus aspernatur dolore aut quam recusandae in qui!
+      Dicta possimus quod atque officiis quibusdam libero repellat excepturi
+      tempore reiciendis, ut ratione laborum doloremque animi voluptatibus,
+      recusandae ipsa? Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+      Sit possimus ab odio quisquam voluptatem quam. Eaque explicabo delectus ab
+      commodi, nemo vitae facilis repellendus aspernatur dolore aut quam
+      recusandae in qui! Dicta possimus quod atque officiis quibusdam libero
+      repellat excepturi tempore reiciendis, ut ratione laborum doloremque animi
+      voluptatibus, recusandae ipsa?
       {/* Navbar ends */}
     </div>
   );

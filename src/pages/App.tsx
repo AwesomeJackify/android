@@ -5,7 +5,6 @@ import instagramImg from "../assets/instagram.png";
 import safariImg from "../assets/safari.png";
 import itunesImg from "../assets/itunes.webp";
 import aquaImg from "../assets/aqua.png";
-
 import { MdSignalCellularAlt } from "react-icons/md";
 import { MdWifi } from "react-icons/md";
 import { PiClockFill } from "react-icons/pi";
@@ -26,7 +25,6 @@ function App() {
     Test2,
   }
 
-  const [yeet, setYeet] = useState(true);
   const [animationCompleted, setAnimationCompleted] = useState(false);
 
   const createTimeline = () =>
@@ -40,23 +38,12 @@ function App() {
     timeline: gsap.core.Timeline
   ) => {
     timeline
-      // .to("#appIcon" + appId, {
-      //   display: "block",
-      //   opacity: 0.6,
-      //   duration: 0.1,
-      // })
       // Makes app button opacity go lower
       .to("#appIcon" + appId, {
         opacity: 0.5,
         duration: 0.15,
         ease: "easeOutBack",
       })
-      // .to("#app" + appId, {
-      //   delay: 0.05,
-      //   display: "block",
-      //   opacity: 1,
-      //   duration: 0.1,
-      // })
       // Opens/closes app
       .to("#app" + appId + ">.preview", {
         display: "block",
@@ -258,14 +245,7 @@ function App() {
               <h1 className="weather-text text-4xl max-md:text-xl">
                 Salt Lake City
               </h1>
-              {yeet && (
-                <h2
-                  className="text-xl weather-text"
-                  onClick={() => setYeet(false)}
-                >
-                  Mostly Cloudy
-                </h2>
-              )}
+              <h2 className="text-xl weather-text">Mostly Cloudy</h2>
             </div>
             <img
               id="weather-img"
