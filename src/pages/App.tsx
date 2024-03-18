@@ -2,7 +2,7 @@ import { gsap } from "gsap";
 import { useState, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import instagramImg from "../assets/instagram.png";
-import safariImg from "../assets/safari.png";
+import youtubeImg from "../assets/youtube.png";
 import itunesImg from "../assets/itunes.webp";
 import aquaImg from "../assets/aqua.png";
 import { MdSignalCellularAlt } from "react-icons/md";
@@ -187,7 +187,7 @@ function App() {
     },
     {
       name: Apps.Test1,
-      icon: safariImg,
+      icon: youtubeImg,
       ref: test1TimelineRef,
       timeline: test1Timeline,
     },
@@ -231,7 +231,7 @@ function App() {
           </div>
         </div>
         <div className="flex z-10 px-2 max-w-screen-xl pt-4 mx-auto w-full flex-col gap-4 max-md:gap-8  max-md:pt-8 relative grow">
-          <div className="bg-black grow max-h-32 w-full rounded-2xl border-white border-t-2 border-x-[1px]">
+          <div className="bg-slate-100 opacity-10 grow max-h-32 w-full rounded-2xl border-white border-y-2 border-x-[1px]">
             <div className="bg-gradient-to-b from-zinc-700 to-zinc-900 h-1/2 w-full rounded-2xl"></div>
           </div>
           <div
@@ -291,7 +291,7 @@ function App() {
           >
             {dockItems.map((item) => (
               <div id={`app${item.name.toString()}`} key={item.name}>
-                <div>
+                <div className="relative">
                   <img
                     src={item.icon}
                     alt={item.name.toString()}
@@ -300,7 +300,7 @@ function App() {
                   />
                   <div
                     id={`appIconBackground${item.name}`}
-                    className="h-32 aspect-square bottom-6 absolute bg-black opacity-0 rounded-2xl"
+                    className="left-0 right-0 aspect-square bottom-0 absolute bg-black opacity-0 rounded-2xl"
                     onClick={() => openApp(item.ref.current)}
                   ></div>
                 </div>
