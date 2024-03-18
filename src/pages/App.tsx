@@ -1,5 +1,5 @@
 import { gsap } from "gsap";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import instagramImg from "../assets/instagram.png";
 import youtubeImg from "../assets/youtube.png";
@@ -17,7 +17,9 @@ import { SlPeople } from "react-icons/sl";
 
 import weatherImg from "../assets/weather.png";
 
-import Portfolio from "../apps/Portfolio";
+import Instagram from "../apps/Instagram";
+import Youtube from "../apps/Youtube";
+
 function App() {
   enum Apps {
     Portfolio,
@@ -26,12 +28,17 @@ function App() {
   }
 
   const [animationCompleted, setAnimationCompleted] = useState(false);
+  const [showMiniPlayer, setShowMiniPlayer] = useState(false);
 
   const createTimeline = () =>
     gsap.timeline({
       paused: true,
       delay: 0,
     });
+
+  useEffect(() => {
+    console.log(showMiniPlayer);
+  }, [showMiniPlayer]);
 
   const configureAppTimeline = (
     appId: number,
@@ -183,18 +190,26 @@ function App() {
       icon: instagramImg,
       ref: portfolioTimelineRef,
       timeline: portfolioTimeline,
+      app: <Instagram animationCompleted={animationCompleted} />,
     },
     {
       name: Apps.Test1,
       icon: youtubeImg,
       ref: test1TimelineRef,
       timeline: test1Timeline,
+      app: (
+        <Youtube
+          animationCompleted={animationCompleted}
+          handleSetShowMiniPlayer={setShowMiniPlayer}
+        />
+      ),
     },
     {
       name: Apps.Test2,
       icon: itunesImg,
       ref: test2TimelineRef,
       timeline: test2Timeline,
+      app: <Instagram animationCompleted={animationCompleted} />,
     },
   ];
 
@@ -305,7 +320,7 @@ function App() {
                 </div>
 
                 <div className="no-scrollbar preview w-full h-full aspect-square absolute bottom-6 object-cover  overflow-y-scroll bg-white hidden rounded-2xl z-10">
-                  <Portfolio animationCompleted={animationCompleted} />
+                  {item.app}
                 </div>
               </div>
             ))}
