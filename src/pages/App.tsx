@@ -58,8 +58,7 @@ function App() {
       })
       // Make app start small on screen
       .to("#app" + appId + ">.preview", {
-        width: "20%",
-        height: "20%",
+        scale: "0.15",
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)",
@@ -98,8 +97,8 @@ function App() {
       )
 
       .to("#app" + appId + ">.preview", {
-        width: "100%",
-        height: "100%",
+        scaleX: "1",
+        scaleY: "1",
         filter: "blur(0px)",
 
         ease: "expo.inOut",
@@ -305,7 +304,7 @@ function App() {
                   ></div>
                 </div>
 
-                <div className="no-scrollbar preview h-32 aspect-square absolute bottom-6 object-cover  overflow-y-scroll bg-white hidden rounded-2xl z-10">
+                <div className="no-scrollbar preview w-full h-full aspect-square absolute bottom-6 object-cover  overflow-y-scroll bg-white hidden rounded-2xl z-10">
                   <Portfolio animationCompleted={animationCompleted} />
                 </div>
               </div>
