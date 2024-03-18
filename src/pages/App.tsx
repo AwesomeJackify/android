@@ -14,8 +14,11 @@ import { HiOutlineCalendarDays } from "react-icons/hi2";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdArrowBackIosNew } from "react-icons/md";
 import { SlPeople } from "react-icons/sl";
-
+import { BsSkipBackwardFill, BsSkipForwardFill } from "react-icons/bs";
 import weatherImg from "../assets/weather.png";
+import { TbPlayerSkipForwardFilled } from "react-icons/tb";
+import { MdMusicNote } from "react-icons/md";
+import { MdMusicOff } from "react-icons/md";
 
 import Instagram from "../apps/Instagram";
 import Youtube from "../apps/Youtube";
@@ -28,7 +31,9 @@ function App() {
   }
 
   const [animationCompleted, setAnimationCompleted] = useState(false);
-  const [showMiniPlayer, setShowMiniPlayer] = useState(false);
+  const [playedVideo, setPlayedVideo] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showMusicPlayer, setShowMusicPlayer] = useState(false);
 
   const createTimeline = () =>
     gsap.timeline({
@@ -37,8 +42,8 @@ function App() {
     });
 
   useEffect(() => {
-    console.log(showMiniPlayer);
-  }, [showMiniPlayer]);
+    console.log(showMusicPlayer);
+  }, [playedVideo]);
 
   const configureAppTimeline = (
     appId: number,
@@ -200,7 +205,9 @@ function App() {
       app: (
         <Youtube
           animationCompleted={animationCompleted}
-          handleSetShowMiniPlayer={setShowMiniPlayer}
+          handleSetPlayedVideo={setPlayedVideo}
+          handleSetIsPlaying={setIsPlaying}
+          isPlaying={isPlaying}
         />
       ),
     },
@@ -241,13 +248,54 @@ function App() {
               <PiClockFill className="text-2xl " />
               <p className="text-lg">100%</p>
               <MdBatteryChargingFull className="text-4xl rotate-90" />
+              {playedVideo && (
+                <>
+                  {isPlaying ? (
+                    <MdMusicNote
+                      className="text-2xl"
+                      onClick={() => setShowMusicPlayer(!showMusicPlayer)}
+                    />
+                  ) : (
+                    <MdMusicOff
+                      className="text-2xl"
+                      onClick={() => setShowMusicPlayer(!showMusicPlayer)}
+                    />
+                  )}
+                </>
+              )}
             </div>
           </div>
         </div>
-        <div className="flex z-10 px-2 max-w-screen-xl pt-4 mx-auto w-full flex-col gap-4 max-md:gap-8  max-md:pt-8 relative grow">
-          <div className="bg-slate-100 opacity-10 grow max-h-32 w-full rounded-2xl border-white border-y-2 border-x-[1px]">
-            <div className="bg-gradient-to-b from-zinc-700 to-zinc-900 h-1/2 w-full rounded-2xl"></div>
-          </div>
+        <div className="flex z-10 px-2 max-w-screen-xl pt-4 mx-auto w-full flex-col gap-4 max-md:gap-8 max-md:pt-8 relative grow">
+          {/* music player */}
+          {showMusicPlayer && (
+            <div className="w-2/5 rounded-lg border-2 border-slate-700 bg-gradient-to-tr from-[#a7e3ff88] to-sky-200/40 from-30% to-40% absolute top-0 right-0 z-10">
+              <div className="flex justify-center p-1">
+                {/* play/pause button */}
+                <div
+                  className="h-12 relative aspect-square bg-gradient-to-b z-10 from-blue-400 border-blue-900 border-[1px] via-blue-950  to-sky-500 rounded-full"
+                  onClick={() => setIsPlaying(!isPlaying)}
+                >
+                  <div className="flex justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 gap-1">
+                    {!isPlaying ? (
+                      <>
+                        <div className="h-6 w-2 rounded-2xl bg-gradient-to-b from-white to-slate-500"></div>
+                        <div className="h-6 w-2 rounded-2xl bg-gradient-to-b from-white to-slate-500"></div>
+                      </>
+                    ) : (
+                      <TbPlayerSkipForwardFilled className="text-2xl text-slate-300" />
+                    )}
+                  </div>
+                </div>
+                {/* left and right butttons */}
+                <div className="border-[1px] border-slate-400 flex items-center justify-between px-5 w-36 h-6 bg-gradient-to-b from-sky-200 to-slate-500 from-40% absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg">
+                  <BsSkipBackwardFill className="text-blue-800" />
+                  <BsSkipForwardFill className="text-blue-800" />
+                </div>
+              </div>
+            </div>
+          )}
+          <div className="grow max-h-32 w-full rounded-2xl border-white border-y-2 border-x-[1px] bg-slate-100 opacity-10"></div>
           <div
             id="weather-card"
             className="grid grid-cols-3 place-items-center"
@@ -319,7 +367,7 @@ function App() {
                   ></div>
                 </div>
 
-                <div className="no-scrollbar preview w-full h-full aspect-square absolute bottom-6 object-cover  overflow-y-scroll bg-white hidden rounded-2xl z-10">
+                <div className="no-scrollbar preview w-full h-full aspect-square absolute bottom-6 object-cover overflow-y-scroll bg-white hidden rounded-2xl z-10">
                   {item.app}
                 </div>
               </div>

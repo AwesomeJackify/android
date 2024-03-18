@@ -1,12 +1,39 @@
+import { useEffect, useRef } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import YouTube, { YouTubeProps } from "react-youtube";
 
 const Youtube: React.FC<{
   animationCompleted: boolean;
-  handleSetShowMiniPlayer: Function;
-}> = ({ animationCompleted }) => {
+  handleSetPlayedVideo: Function;
+  handleSetIsPlaying: Function;
+  isPlaying: boolean;
+}> = ({
+  animationCompleted,
+  handleSetPlayedVideo,
+  handleSetIsPlaying,
+  isPlaying,
+}) => {
+  const playerRef = useRef<YouTube | null>(null);
+
+  useEffect(() => {
+    if (playerRef != null) {
+      if (isPlaying) {
+        playerRef.current?.internalPlayer?.playVideo();
+      } else {
+        playerRef.current?.internalPlayer?.pauseVideo();
+      }
+    }
+  }, [isPlaying]);
+
   const onStateChange = (event: any) => {
-    console.log("event", event);
+    if (event.data > -1) {
+      handleSetPlayedVideo(true);
+    }
+    if (event.data == 1) {
+      handleSetIsPlaying(true);
+    } else if (event.data == 2) {
+      handleSetIsPlaying(false);
+    }
   };
 
   const opts: YouTubeProps["opts"] = {
@@ -14,7 +41,7 @@ const Youtube: React.FC<{
     width: "100%",
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
-      // autoplay: 1,
+      fs: 0,
     },
   };
 
@@ -40,6 +67,7 @@ const Youtube: React.FC<{
           videoId="fgGlFmniFVY"
           opts={opts}
           onStateChange={onStateChange}
+          ref={playerRef}
         />
       </div>
     </div>
