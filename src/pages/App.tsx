@@ -53,20 +53,9 @@ function App() {
       // Blur background
       .to("#bgImage", {
         filter: "blur(5px)",
-
         opacity: 0.8,
         duration: 0.12,
       })
-
-      .to(
-        "#weather-img",
-        {
-          opacity: 0.0,
-          duration: 0.1,
-          delay: 0.1,
-        },
-        0
-      )
       // Make app start small on screen
       .to("#app" + appId + ">.preview", {
         width: "20%",
@@ -88,6 +77,14 @@ function App() {
           scale: 0.98,
           opacity: 0.5,
           duration: 0.25,
+        },
+        0
+      )
+      .to(
+        "#weather-img",
+        {
+          opacity: 0.5,
+          duration: 0.2,
         },
         0
       )
@@ -251,7 +248,7 @@ function App() {
               id="weather-img"
               src={weatherImg}
               alt="weather"
-              className="w-full scale-150 hover:opacity-50 transition duration-1000"
+              className="w-full scale-150"
             />
             <div className="weather-text flex flex-col text-white gap-1 items-end">
               <h1 className="text-3xl max-md:text-xl">Wed, Mar 30</h1>
