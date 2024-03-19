@@ -221,8 +221,8 @@ function App() {
   ];
 
   return (
-    <div className="bg-black overflow-hidden">
-      <div className="flex h-screen max-h-screen flex-col max-w-lg mx-auto relative">
+    <div className="bg-black absolute top-0 left-0 bottom-0 right-0">
+      <div className="flex flex-col max-w-lg mx-auto relative h-[calc(100dvh)]">
         <img
           id="bgImage"
           src={aquaImg}
@@ -269,7 +269,7 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="flex z-10 px-2 max-w-screen-xl pt-4 mx-auto w-full flex-col gap-4 max-md:gap-8 max-md:pt-8 relative grow">
+        <div className="flex z-10 px-2 max-w-screen-xl pt-4 mx-auto w-full flex-col gap-4 relative grow">
           {/* music player */}
           {showMusicPlayer && (
             <div className="w-2/5 rounded-lg border-2 border-slate-700 bg-gradient-to-tr from-[#a7e3ff88] to-sky-200/40 from-30% to-40% absolute top-0 right-0 z-10">
@@ -298,7 +298,7 @@ function App() {
               </div>
             </div>
           )}
-          <div className="grow max-h-32 w-full rounded-2xl border-white border-y-2 border-x-[1px] bg-slate-100 opacity-10"></div>
+          <div className="max-h-48 w-full rounded-2xl border-white border-y-2 border-x-[1px] bg-slate-100 opacity-10 grow"></div>
           <div
             id="weather-card"
             className="grid grid-cols-3 place-items-center"
@@ -332,21 +332,21 @@ function App() {
             className="flex flex-col opacity-70 bg-gradient-to-b from-slate-100 from-10% via-slate-900 to-slate-900 rounded-md p-4 border-slate-400 border-2"
           >
             <div className="flex text-white justify-between">
-              <h1 className="text-4xl">30, March</h1>
-              <div className="w-1 h-12 rounded-xl bg-gradient-to-r from-slate-500 opacity-70 to-slate-900"></div>
-              <h1 className="text-4xl">Alarms</h1>
+              <h1 className="text-4xl max-md:text-xl">30, March</h1>
+              <div className="w-1 h-12 max-md:h-4 rounded-xl bg-gradient-to-r from-slate-500 opacity-70 to-slate-900"></div>
+              <h1 className="text-4xl max-md:text-xl">Alarms</h1>
             </div>
-            <div className="w-full h-1 bg-slate-500 opacity-70 rounded-2xl mb-4"></div>
+            <div className="w-full h-1 bg-slate-500 opacity-70 rounded-2xl mb-4 max-md:mb-2"></div>
             <div className="flex justify-between">
               <div className="flex text-white items-center gap-2">
                 <div className="bg-gradient-to-b from-gray-500 rounded-sm">
-                  <HiOutlineCalendarDays className="text-4xl " />
+                  <HiOutlineCalendarDays className="text-4xl max-md:text-xl" />
                 </div>
-                <h1 className="text-3xl">Calendar</h1>
+                <h1 className="text-3xl max-md:text-xl">Calendar</h1>
               </div>
               <div className="flex text-white items-end">
-                <h1 className="text-3xl">23:32</h1>
-                <h2>PM</h2>
+                <h1 className="text-3xl max-md:text-xl">23:32</h1>
+                <h2 className="max-md:text-lg">PM</h2>
               </div>
             </div>
           </div>
