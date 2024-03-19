@@ -5,6 +5,7 @@ import instagramImg from "../assets/instagram.png";
 import youtubeImg from "../assets/youtube.png";
 import itunesImg from "../assets/itunes.webp";
 import aquaImg from "../assets/aqua.png";
+import profileImg from "../assets/profile.jpeg";
 import { MdSignalCellularAlt } from "react-icons/md";
 import { MdWifi } from "react-icons/md";
 import { PiClockFill } from "react-icons/pi";
@@ -226,7 +227,7 @@ function App() {
 
   return (
     <div className="bg-black absolute top-0 left-0 bottom-0 right-0">
-      <div className="flex flex-col max-w-lg mx-auto relative h-[calc(100dvh)]">
+      <div className="flex flex-col max-w-lg mx-auto relative h-[calc(100dvh)] max-h-screen overflow-hidden">
         <img
           id="bgImage"
           src={aquaImg}
@@ -302,7 +303,24 @@ function App() {
               </div>
             </div>
           )}
-          <div className="max-h-48 w-full rounded-2xl border-white border-y-2 border-x-[1px] bg-slate-100 opacity-10 grow"></div>
+          <div className="max-h-32 max-md:max-h-20 w-full rounded-2xl grow grid grid-cols-2 place-items-center gap-8">
+            <div className="relative h-full w-full flex flex-col items-center justify-center">
+              <img
+                src={profileImg}
+                alt={profileImg}
+                className="h-32 max-md:h-20 max-md:w-2/3 z-10"
+              />
+            </div>
+            <div className="relative h-full w-3/4 max-md:w-full bg-orange-500/50 text-black flex flex-col gap-1 p-2 overflow-scroll">
+              <h1 className="font-bold text-base">Project</h1>
+              <div className="flex flex-col gap-0">
+                <p className="text-xs">@jackzebra626</p>
+                <p className="text-xs">todo:</p>
+                <p className="text-xs">[x]get cereal</p>
+                <p className="text-xs">[]make money</p>
+              </div>
+            </div>
+          </div>
           <div
             id="weather-card"
             className="grid grid-cols-3 place-items-center"
@@ -336,21 +354,21 @@ function App() {
             className="flex flex-col opacity-70 bg-gradient-to-b from-slate-100 from-10% via-slate-900 to-slate-900 rounded-md p-4 border-slate-400 border-2"
           >
             <div className="flex text-white justify-between">
-              <h1 className="text-4xl max-md:text-xl">30, March</h1>
-              <div className="w-1 h-12 max-md:h-4 rounded-xl bg-gradient-to-r from-slate-500 opacity-70 to-slate-900"></div>
-              <h1 className="text-4xl max-md:text-xl">Alarms</h1>
+              <h1 className="text-2xl max-md:text-xl">30, March</h1>
+              <div className="w-1 h-6 max-md:h-4 rounded-xl bg-gradient-to-r from-slate-500 opacity-70 to-slate-900"></div>
+              <h1 className="text-2xl max-md:text-xl">Alarms</h1>
             </div>
-            <div className="w-full h-1 bg-slate-500 opacity-70 rounded-2xl mb-4 max-md:mb-2"></div>
+            <div className="w-full h-1 bg-slate-500 opacity-70 rounded-2xl mb-3 max-md:mb-2"></div>
             <div className="flex justify-between">
               <div className="flex text-white items-center gap-2">
                 <div className="bg-gradient-to-b from-gray-500 rounded-sm">
-                  <HiOutlineCalendarDays className="text-4xl max-md:text-xl" />
+                  <HiOutlineCalendarDays className="text-2xl max-md:text-xl" />
                 </div>
-                <h1 className="text-3xl max-md:text-xl">Calendar</h1>
+                <h1 className="text-xl max-md:text-xl">Calendar</h1>
               </div>
               <div className="flex text-white items-end">
-                <h1 className="text-3xl max-md:text-xl">23:32</h1>
-                <h2 className="max-md:text-lg">PM</h2>
+                <h1 className="text-xl max-md:text-xl">23:32</h1>
+                <h2 className="max-md:text-lg text-sm">PM</h2>
               </div>
             </div>
           </div>
@@ -365,7 +383,7 @@ function App() {
                     src={item.icon}
                     alt={item.name.toString()}
                     id={`appIcon${item.name}`}
-                    className="w-32 border-4 rounded-2xl bottom-0 bg-black border-zinc-300 border-l-zinc-300 border-b-black border-r-black shadow-2xl"
+                    className="w-28 border-4 rounded-2xl bottom-0 bg-black border-zinc-300 border-l-zinc-300 border-b-black border-r-black shadow-2xl"
                   />
                   <div
                     id={`appIconBackground${item.name}`}
