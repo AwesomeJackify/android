@@ -22,6 +22,7 @@ import { MdMusicOff } from "react-icons/md";
 
 import Instagram from "../apps/Instagram";
 import Youtube from "../apps/Youtube";
+import Spotify from "../apps/Spotify";
 
 function App() {
   enum Apps {
@@ -216,7 +217,7 @@ function App() {
       icon: itunesImg,
       ref: test2TimelineRef,
       timeline: test2Timeline,
-      app: <Instagram animationCompleted={animationCompleted} />,
+      app: <Spotify animationCompleted={animationCompleted} />,
     },
   ];
 
@@ -246,7 +247,7 @@ function App() {
               <p className="font-bold text-lg max-md:text-base">AT&T</p>
               <MdWifi className="text-2xl max-md:text-base" />
             </div>
-            <h1 className="font-semibold text-xl max-md:text-base">11:30 PM</h1>
+            <h1 className="font-semibold text-xl max-md:text-base">9:41 AM</h1>
             <div className="flex gap-2 items-center max-md:gap-1">
               <PiClockFill className="text-2xl max-md:text-base" />
               <p className="text-lg max-md:text-base">100%</p>
@@ -272,8 +273,8 @@ function App() {
         <div className="flex z-10 px-2 max-w-screen-xl pt-4 mx-auto w-full flex-col gap-4 relative grow">
           {/* music player */}
           {showMusicPlayer && (
-            <div className="w-2/5 rounded-lg border-2 border-slate-700 bg-gradient-to-tr from-[#a7e3ff88] to-sky-200/40 from-30% to-40% absolute top-0 right-0 z-10">
-              <div className="flex justify-center p-1">
+            <div className="w-2/5 max-md:w-3/5 p-1 rounded-lg border-2 border-slate-700 bg-gradient-to-tr from-[#a7e3ff88] to-sky-200/40 from-30% to-40% absolute top-0 right-0 z-10">
+              <div className="flex justify-center">
                 {/* play/pause button */}
                 <div
                   className="h-12 relative aspect-square bg-gradient-to-b z-10 from-blue-400 border-blue-900 border-[1px] via-blue-950  to-sky-500 rounded-full"
