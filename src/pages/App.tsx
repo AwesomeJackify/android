@@ -193,6 +193,7 @@ function App() {
   const dockItems = [
     {
       name: Apps.Portfolio,
+      label: "Instagram",
       icon: instagramImg,
       ref: portfolioTimelineRef,
       timeline: portfolioTimeline,
@@ -201,6 +202,7 @@ function App() {
     {
       name: Apps.Test1,
       icon: youtubeImg,
+      label: "Youtube",
       ref: test1TimelineRef,
       timeline: test1Timeline,
       app: (
@@ -215,6 +217,7 @@ function App() {
     {
       name: Apps.Test2,
       icon: itunesImg,
+      label: "Spotify",
       ref: test2TimelineRef,
       timeline: test2Timeline,
       app: <Spotify animationCompleted={animationCompleted} />,
@@ -374,6 +377,9 @@ function App() {
                 <div className="no-scrollbar preview w-full h-full aspect-square absolute bottom-6 object-cover overflow-y-scroll bg-white hidden rounded-2xl z-10">
                   {item.app}
                 </div>
+                <h1 className="text-center text-white max-md:text-sm mt-2">
+                  {item.label}
+                </h1>
               </div>
             ))}
           </div>
