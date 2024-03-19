@@ -222,7 +222,7 @@ function App() {
 
   return (
     <div className="bg-black overflow-hidden">
-      <div className="flex min-h-screen flex-col max-w-lg mx-auto relative">
+      <div className="flex h-screen max-h-screen flex-col max-w-lg mx-auto relative">
         <img
           id="bgImage"
           src={aquaImg}
@@ -236,28 +236,31 @@ function App() {
               id="header-left"
             >
               <div className="relative">
-                <MdSignalCellularAlt id="signalFull" className="text-2xl" />
-                <MdOutlineSignalCellularAlt2Bar className="text-2xl absolute top-0 left-0" />
+                <MdSignalCellularAlt
+                  id="signalFull"
+                  className="text-2xl max-md:text-base"
+                />
+                <MdOutlineSignalCellularAlt2Bar className="text-2xl absolute top-0 left-0 max-md:text-base" />
               </div>
 
               <p className="font-bold text-lg max-md:text-base">AT&T</p>
               <MdWifi className="text-2xl max-md:text-base" />
             </div>
-            <h1 className="font-semibold text-xl">11:30 PM</h1>
+            <h1 className="font-semibold text-xl max-md:text-base">11:30 PM</h1>
             <div className="flex gap-2 items-center max-md:gap-1">
-              <PiClockFill className="text-2xl " />
-              <p className="text-lg">100%</p>
-              <MdBatteryChargingFull className="text-4xl rotate-90" />
+              <PiClockFill className="text-2xl max-md:text-base" />
+              <p className="text-lg max-md:text-base">100%</p>
+              <MdBatteryChargingFull className="text-4xl rotate-90 max-md:text-base" />
               {playedVideo && (
                 <>
                   {isPlaying ? (
                     <MdMusicNote
-                      className="text-2xl"
+                      className="text-2xl max-md:text-base"
                       onClick={() => setShowMusicPlayer(!showMusicPlayer)}
                     />
                   ) : (
                     <MdMusicOff
-                      className="text-2xl"
+                      className="text-2xl max-md:text-base"
                       onClick={() => setShowMusicPlayer(!showMusicPlayer)}
                     />
                   )}
@@ -277,7 +280,7 @@ function App() {
                   onClick={() => setIsPlaying(!isPlaying)}
                 >
                   <div className="flex justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 gap-1">
-                    {!isPlaying ? (
+                    {isPlaying ? (
                       <>
                         <div className="h-6 w-2 rounded-2xl bg-gradient-to-b from-white to-slate-500"></div>
                         <div className="h-6 w-2 rounded-2xl bg-gradient-to-b from-white to-slate-500"></div>
