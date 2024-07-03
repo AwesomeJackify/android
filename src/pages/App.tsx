@@ -20,10 +20,13 @@ import weatherImg from "../assets/weather.png";
 import { TbPlayerSkipForwardFilled } from "react-icons/tb";
 import { MdMusicNote } from "react-icons/md";
 import { MdMusicOff } from "react-icons/md";
+import { createClient } from "../utils";
+import getCollectionByIdQuery from "../queries/getCollectionByIdQuery";
 
 import Instagram from "../apps/Instagram";
 import Youtube from "../apps/Youtube";
 import Spotify from "../apps/Spotify";
+import Ball from "../apps/Ball";
 
 function App() {
   enum Apps {
@@ -36,6 +39,22 @@ function App() {
   const [playedVideo, setPlayedVideo] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showMusicPlayer, setShowMusicPlayer] = useState(false);
+
+  useEffect(() => {
+    const fetchCollection = async () => {
+      const { data } = await createClient(
+        import.meta.env.VITE_SHOPIFY_PUBLIC_ACCESS_TOKEN
+      ).request(getCollectionByIdQuery, {
+        variables: {
+          id: "gid://shopify/Collection/271423144007",
+        },
+      });
+
+      console.log(data);
+    };
+
+    fetchCollection();
+  });
 
   const createTimeline = () =>
     gsap.timeline({
@@ -221,7 +240,7 @@ function App() {
       label: "Spotify",
       ref: test2TimelineRef,
       timeline: test2Timeline,
-      app: <Spotify animationCompleted={animationCompleted} />,
+      app: <Ball animationCompleted={animationCompleted} />,
     },
   ];
 
