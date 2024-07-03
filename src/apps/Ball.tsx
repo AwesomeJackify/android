@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import stripes from "../assets/stripes.png";
 
