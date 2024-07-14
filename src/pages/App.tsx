@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import instagramImg from "../assets/instagram.png";
 import youtubeImg from "../assets/youtube.png";
-import itunesImg from "../assets/itunes.webp";
+import ebayImg from "../assets/ebay.webp";
 import aquaImg from "../assets/aqua.png";
 import profileImg from "../assets/profile.jpeg";
 import { MdSignalCellularAlt } from "react-icons/md";
@@ -217,8 +217,8 @@ function App() {
     },
     {
       name: Apps.Test2,
-      icon: itunesImg,
-      label: "Spotify",
+      icon: ebayImg,
+      label: "Shop",
       ref: test2TimelineRef,
       timeline: test2Timeline,
       app: <Spotify animationCompleted={animationCompleted} />,
@@ -227,7 +227,7 @@ function App() {
 
   return (
     <div className="bg-black absolute top-0 left-0 bottom-0 right-0">
-      <div className="flex flex-col max-w-lg mx-auto relative h-[calc(100dvh)] max-h-screen overflow-hidden">
+      <div className="flex flex-col max-w-md mx-auto relative h-[calc(100dvh)] max-h-screen overflow-hidden">
         <img
           id="bgImage"
           src={aquaImg}
@@ -383,7 +383,7 @@ function App() {
                     src={item.icon}
                     alt={item.name.toString()}
                     id={`appIcon${item.name}`}
-                    className="w-28 border-4 rounded-2xl bottom-0 bg-black border-zinc-300 border-l-zinc-300 border-b-black border-r-black shadow-2xl"
+                    className="w-28 aspect-square object-contain bg-white border-4 rounded-2xl bottom-0 bg-black border-zinc-300 border-l-zinc-300 border-b-black border-r-black shadow-2xl"
                   />
                   <div
                     id={`appIconBackground${item.name}`}

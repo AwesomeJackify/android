@@ -1,36 +1,76 @@
+import { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 
 const Spotify: React.FC<{ animationCompleted: boolean }> = ({
   animationCompleted,
 }) => {
-  return (
-    <div className="flex flex-col justify-start h-full bg-black">
-      {/* Sticky nav bar */}
-      <div className="sticky text-white top-0 shadow-md z-10 h-24 flex items-center bg-blue-400 justify-start">
-        {animationCompleted && (
-          <div className="h-full flex items-center w-full justify-center text-2xl">
-            <h1 className="w-5/6 ml-4">Spotify</h1>
-            <div className="h-full w-1/6 flex items-center justify-center text-5xl border-l-2 border-gray-800">
-              <h1 className="">
-                <FaArrowRight />
-              </h1>
-            </div>
-          </div>
-        )}
-      </div>
-      {/* Navbar ends */}
+  const [variant, setVariant] = useState();
 
-      <iframe
-        style={{ borderRadius: "12px" }}
-        src="https://open.spotify.com/embed/artist/5zIE5XrsBLymJoVVYznZlL?utm_source=generator&theme=2"
-        width="100%"
-        height="100%"
-        frameBorder="0"
-        allowFullScreen={true}
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy"
-      ></iframe>
-    </div>
+  const handleButtonChange = (selectedVariant: any) => {
+    setVariant(selectedVariant);
+  };
+
+  return (
+    <section className="flex flex-col">
+      <div className="flex flex-col max-w-md mx-auto w-full">
+        <h1 className="bg-gradient-to-r from-[#323A84] via-[#6669BB] to-[#323A84] text-white text-center px-2 py-4 text-4xl">
+          BURN DETAIL FAUX LEATHER SHORTS
+        </h1>
+        <div className="grid grid-cols-2">
+          <h2 className="text-center text-2xl font-extralight text-gray-500">
+            $400.62
+          </h2>
+          <div className="join justify-end pr-8 mx-auto gap-4 text-2xl bg-gradient-to-r from-10% to-gray-500 rounded-none from-transparent w-full">
+            <button
+              className={`${variant == "small" ? "text-white" : "text-black"}`}
+              onClick={() => handleButtonChange("small")}
+            >
+              S
+            </button>
+            <button
+              className={`${variant == "medium" ? "text-white" : "text-black"}`}
+              onClick={() => handleButtonChange("medium")}
+            >
+              M
+            </button>
+            <button
+              className={`${variant == "large" ? "text-white" : "text-black"}`}
+              onClick={() => handleButtonChange("large")}
+            >
+              L
+            </button>
+          </div>
+        </div>
+        {/* <AddToCart token={token} variantId={variant.id} /> */}
+      </div>
+      <div className="w-full">
+        <img
+          src="https://kusikohc.com/cdn/shop/files/KUS4PT03KR-C5001.999_FT_1999x.jpg?v=1717666401"
+          alt="product"
+          width={800}
+          height={800}
+          className="w-full h-full object-contain"
+        />
+        <img
+          src="https://kusikohc.com/cdn/shop/files/11062023-KUS4PT03KR-C5001.999_2_1999x.jpg?v=1716886891"
+          alt="product"
+          width={800}
+          height={800}
+          className="w-full h-full object-contain"
+        />
+      </div>
+      <div className="mt-8">
+        <p className="whitespace-pre-wrap max-w-sm text-black font-light text-xs ml-4">
+          • Faux leather shorts, shaped with button waist and rider prints.
+          <br />
+          • 100% Polyurethane <br />
+          • Straight fit <br />
+          • Button closure <br />
+          • Made in China <br />• Color: Black <br /> The Model is wearing a
+          Size Medium
+        </p>
+      </div>
+    </section>
   );
 };
 
