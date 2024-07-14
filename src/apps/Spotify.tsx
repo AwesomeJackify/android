@@ -41,7 +41,9 @@ const Spotify: React.FC<{ animationCompleted: boolean }> = ({
             </button>
           </div>
         </div>
-        {/* <AddToCart token={token} variantId={variant.id} /> */}
+        <button className="bg-black font-serif w-full p-2 text-sm text-center">
+          ADD TO BAG
+        </button>
       </div>
       <div className="w-full">
         <img
