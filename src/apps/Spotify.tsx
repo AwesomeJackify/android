@@ -1,9 +1,6 @@
 import { useState } from "react";
-import { FaArrowRight } from "react-icons/fa";
 
-const Spotify: React.FC<{ animationCompleted: boolean }> = ({
-  animationCompleted,
-}) => {
+const Spotify: React.FC<{ animationCompleted: boolean }> = () => {
   const [variant, setVariant] = useState();
 
   const handleButtonChange = (selectedVariant: any) => {
