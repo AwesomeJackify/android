@@ -1,10 +1,11 @@
 import { gsap } from "gsap";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import instagramImg from "../assets/instagram.png";
 import youtubeImg from "../assets/youtube.png";
-import itunesImg from "../assets/itunes.webp";
+import ebayImg from "../assets/ebay.webp";
 import aquaImg from "../assets/aqua.png";
+import profileImg from "../assets/profile.jpeg";
 import { MdSignalCellularAlt } from "react-icons/md";
 import { MdWifi } from "react-icons/md";
 import { PiClockFill } from "react-icons/pi";
@@ -14,10 +15,16 @@ import { HiOutlineCalendarDays } from "react-icons/hi2";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdArrowBackIosNew } from "react-icons/md";
 import { SlPeople } from "react-icons/sl";
-
+import { BsSkipBackwardFill, BsSkipForwardFill } from "react-icons/bs";
 import weatherImg from "../assets/weather.png";
+import { TbPlayerSkipForwardFilled } from "react-icons/tb";
+import { MdMusicNote } from "react-icons/md";
+import { MdMusicOff } from "react-icons/md";
 
-import Portfolio from "../apps/Portfolio";
+import Instagram from "../apps/Instagram";
+import Youtube from "../apps/Youtube";
+import Spotify from "../apps/Spotify";
+
 function App() {
   enum Apps {
     Portfolio,
@@ -26,12 +33,19 @@ function App() {
   }
 
   const [animationCompleted, setAnimationCompleted] = useState(false);
+  const [playedVideo, setPlayedVideo] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [showMusicPlayer, setShowMusicPlayer] = useState(false);
 
   const createTimeline = () =>
     gsap.timeline({
       paused: true,
       delay: 0,
     });
+
+  useEffect(() => {
+    console.log(showMusicPlayer);
+  }, [playedVideo]);
 
   const configureAppTimeline = (
     appId: number,
@@ -58,8 +72,7 @@ function App() {
       })
       // Make app start small on screen
       .to("#app" + appId + ">.preview", {
-        width: "20%",
-        height: "20%",
+        scale: "0.15",
         top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)",
@@ -98,8 +111,8 @@ function App() {
       )
 
       .to("#app" + appId + ">.preview", {
-        width: "100%",
-        height: "100%",
+        scaleX: "1",
+        scaleY: "1",
         filter: "blur(0px)",
 
         ease: "expo.inOut",
@@ -181,27 +194,40 @@ function App() {
   const dockItems = [
     {
       name: Apps.Portfolio,
+      label: "Instagram",
       icon: instagramImg,
       ref: portfolioTimelineRef,
       timeline: portfolioTimeline,
+      app: <Instagram animationCompleted={animationCompleted} />,
     },
     {
       name: Apps.Test1,
       icon: youtubeImg,
+      label: "Youtube",
       ref: test1TimelineRef,
       timeline: test1Timeline,
+      app: (
+        <Youtube
+          animationCompleted={animationCompleted}
+          handleSetPlayedVideo={setPlayedVideo}
+          handleSetIsPlaying={setIsPlaying}
+          isPlaying={isPlaying}
+        />
+      ),
     },
     {
       name: Apps.Test2,
-      icon: itunesImg,
+      icon: ebayImg,
+      label: "Shop",
       ref: test2TimelineRef,
       timeline: test2Timeline,
+      app: <Spotify animationCompleted={animationCompleted} />,
     },
   ];
 
   return (
-    <div className="bg-black overflow-hidden">
-      <div className="flex min-h-screen flex-col max-w-lg mx-auto relative">
+    <div className="bg-black absolute top-0 left-0 bottom-0 right-0">
+      <div className="flex flex-col max-w-md mx-auto relative h-[calc(100dvh)] max-h-screen overflow-hidden">
         <img
           id="bgImage"
           src={aquaImg}
@@ -215,24 +241,85 @@ function App() {
               id="header-left"
             >
               <div className="relative">
-                <MdSignalCellularAlt id="signalFull" className="text-2xl" />
-                <MdOutlineSignalCellularAlt2Bar className="text-2xl absolute top-0 left-0" />
+                <MdSignalCellularAlt
+                  id="signalFull"
+                  className="text-2xl max-md:text-base"
+                />
+                <MdOutlineSignalCellularAlt2Bar className="text-2xl absolute top-0 left-0 max-md:text-base" />
               </div>
 
               <p className="font-bold text-lg max-md:text-base">AT&T</p>
               <MdWifi className="text-2xl max-md:text-base" />
             </div>
-            <h1 className="font-semibold text-xl">11:30 PM</h1>
+            <h1 className="font-semibold text-xl max-md:text-base">9:41 AM</h1>
             <div className="flex gap-2 items-center max-md:gap-1">
-              <PiClockFill className="text-2xl " />
-              <p className="text-lg">100%</p>
-              <MdBatteryChargingFull className="text-4xl rotate-90" />
+              <PiClockFill className="text-2xl max-md:text-base" />
+              <p className="text-lg max-md:text-base">100%</p>
+              <MdBatteryChargingFull className="text-4xl rotate-90 max-md:text-base" />
+              {playedVideo && (
+                <>
+                  {isPlaying ? (
+                    <MdMusicNote
+                      className="text-2xl max-md:text-base"
+                      onClick={() => setShowMusicPlayer(!showMusicPlayer)}
+                    />
+                  ) : (
+                    <MdMusicOff
+                      className="text-2xl max-md:text-base"
+                      onClick={() => setShowMusicPlayer(!showMusicPlayer)}
+                    />
+                  )}
+                </>
+              )}
             </div>
           </div>
         </div>
-        <div className="flex z-10 px-2 max-w-screen-xl pt-4 mx-auto w-full flex-col gap-4 max-md:gap-8  max-md:pt-8 relative grow">
-          <div className="bg-slate-100 opacity-10 grow max-h-32 w-full rounded-2xl border-white border-y-2 border-x-[1px]">
-            <div className="bg-gradient-to-b from-zinc-700 to-zinc-900 h-1/2 w-full rounded-2xl"></div>
+        <div className="flex z-10 px-2 max-w-screen-xl pt-4 mx-auto w-full flex-col gap-4 relative grow">
+          {/* music player */}
+          {showMusicPlayer && (
+            <div className="w-2/5 max-md:w-3/5 p-1 rounded-lg border-2 border-slate-700 bg-gradient-to-tr from-[#a7e3ff88] to-sky-200/40 from-30% to-40% absolute top-0 right-0 z-10">
+              <div className="flex justify-center">
+                {/* play/pause button */}
+                <div
+                  className="h-12 relative aspect-square bg-gradient-to-b z-10 from-blue-400 border-blue-900 border-[1px] via-blue-950  to-sky-500 rounded-full"
+                  onClick={() => setIsPlaying(!isPlaying)}
+                >
+                  <div className="flex justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 gap-1">
+                    {isPlaying ? (
+                      <>
+                        <div className="h-6 w-2 rounded-2xl bg-gradient-to-b from-white to-slate-500"></div>
+                        <div className="h-6 w-2 rounded-2xl bg-gradient-to-b from-white to-slate-500"></div>
+                      </>
+                    ) : (
+                      <TbPlayerSkipForwardFilled className="text-2xl text-slate-300" />
+                    )}
+                  </div>
+                </div>
+                {/* left and right butttons */}
+                <div className="border-[1px] border-slate-400 flex items-center justify-between px-5 w-36 h-6 bg-gradient-to-b from-sky-200 to-slate-500 from-40% absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg">
+                  <BsSkipBackwardFill className="text-blue-800" />
+                  <BsSkipForwardFill className="text-blue-800" />
+                </div>
+              </div>
+            </div>
+          )}
+          <div className="max-h-32 max-md:max-h-20 w-full rounded-2xl grow grid grid-cols-2 place-items-center gap-8">
+            <div className="relative h-full w-full flex flex-col items-center justify-center">
+              <img
+                src={profileImg}
+                alt={profileImg}
+                className="h-32 max-md:h-20 max-md:w-2/3 z-10"
+              />
+            </div>
+            <div className="relative h-full w-3/4 max-md:w-full bg-orange-500/50 text-black flex flex-col gap-1 p-2 overflow-scroll">
+              <h1 className="font-bold text-base">Project</h1>
+              <div className="flex flex-col gap-0">
+                <p className="text-xs">@jackzebra626</p>
+                <p className="text-xs">todo:</p>
+                <p className="text-xs">[x]get cereal</p>
+                <p className="text-xs">[]make money</p>
+              </div>
+            </div>
           </div>
           <div
             id="weather-card"
@@ -267,21 +354,21 @@ function App() {
             className="flex flex-col opacity-70 bg-gradient-to-b from-slate-100 from-10% via-slate-900 to-slate-900 rounded-md p-4 border-slate-400 border-2"
           >
             <div className="flex text-white justify-between">
-              <h1 className="text-4xl">30, March</h1>
-              <div className="w-1 h-12 rounded-xl bg-gradient-to-r from-slate-500 opacity-70 to-slate-900"></div>
-              <h1 className="text-4xl">Alarms</h1>
+              <h1 className="text-2xl max-md:text-xl">30, March</h1>
+              <div className="w-1 h-6 max-md:h-4 rounded-xl bg-gradient-to-r from-slate-500 opacity-70 to-slate-900"></div>
+              <h1 className="text-2xl max-md:text-xl">Alarms</h1>
             </div>
-            <div className="w-full h-1 bg-slate-500 opacity-70 rounded-2xl mb-4"></div>
+            <div className="w-full h-1 bg-slate-500 opacity-70 rounded-2xl mb-3 max-md:mb-2"></div>
             <div className="flex justify-between">
               <div className="flex text-white items-center gap-2">
                 <div className="bg-gradient-to-b from-gray-500 rounded-sm">
-                  <HiOutlineCalendarDays className="text-4xl " />
+                  <HiOutlineCalendarDays className="text-2xl max-md:text-xl" />
                 </div>
-                <h1 className="text-3xl">Calendar</h1>
+                <h1 className="text-xl max-md:text-xl">Calendar</h1>
               </div>
               <div className="flex text-white items-end">
-                <h1 className="text-3xl">23:32</h1>
-                <h2>PM</h2>
+                <h1 className="text-xl max-md:text-xl">23:32</h1>
+                <h2 className="max-md:text-lg text-sm">PM</h2>
               </div>
             </div>
           </div>
@@ -296,7 +383,7 @@ function App() {
                     src={item.icon}
                     alt={item.name.toString()}
                     id={`appIcon${item.name}`}
-                    className="w-32 border-4 rounded-2xl bottom-0 bg-black border-zinc-300 border-l-zinc-300 border-b-black border-r-black shadow-2xl"
+                    className="w-28 aspect-square object-contain bg-white border-4 rounded-2xl bottom-0 bg-black border-zinc-300 border-l-zinc-300 border-b-black border-r-black shadow-2xl"
                   />
                   <div
                     id={`appIconBackground${item.name}`}
@@ -305,9 +392,12 @@ function App() {
                   ></div>
                 </div>
 
-                <div className="no-scrollbar preview h-32 aspect-square absolute bottom-6 object-cover  overflow-y-scroll bg-white hidden rounded-2xl z-10">
-                  <Portfolio animationCompleted={animationCompleted} />
+                <div className="no-scrollbar preview w-full h-full aspect-square absolute bottom-6 object-cover overflow-y-scroll bg-white hidden rounded-2xl z-10">
+                  {item.app}
                 </div>
+                <h1 className="text-center text-white max-md:text-sm mt-2">
+                  {item.label}
+                </h1>
               </div>
             ))}
           </div>
